@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cadastrozão</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/cadastro.css">
+    <script src="js/cadastro.js" defer></script>
+</head>
+<body class="login-active">
+
+    <div class="main-container login-active">
+
+        <div class="form-login-wrapper panel-wrapper">
+            <div>
+                <h2 class="welcome-title">Bem-vindo de volta</h2>
+                <p class="welcome-subtitle">Insira seus dados para acessar a plataforma.</p>
+                <form onsubmit="event.preventDefault(); alert('Tentativa de login!');">
+                    <button class="apple-login-button">
+                        <i class="fab fa-apple"></i>
+                        Entrar com Apple
+                    </button>
+                    <div class="separator">
+                        <hr>
+                        <span>OU</span>
+                        <hr>
+                    </div>
+                    <div class="form-group"><label for="loginEmail">Email</label><input type="email" id="loginEmail" class="form-input" required placeholder="seu@email.com"></div>
+                    <div class="form-group password-input-wrapper">
+                        <label for="loginPassword">Senha</label><input type="password" id="loginPassword" class="form-input" required placeholder="Sua senha">
+                        <span class="password-toggle-icon" onclick="util_togglePassword(this)"><i class="fas fa-eye"></i></span>
+                    </div>
+                    <button type="submit" class="submit-button-custom">Entrar</button>
+                </form>
+                <p class="alternate-action-link-container">Não tem uma conta? <a href="#" class="action-link" id="showChoiceLink">Cadastre-se</a></p>
+            </div>
+        </div>
+
+        <div class="form-choice-wrapper panel-wrapper">
+            <div>
+                <h2 class="welcome-title">Como deseja se cadastrar?</h2>
+                <p class="welcome-subtitle">Selecione o perfil que melhor descreve você ou sua organização.</p>
+                <div class="signup-choice-options-container">
+                    <div class="signup-choice-option" data-type="empresa">
+                        <i class="fas fa-building"></i>
+                        <h3>Sou uma Empresa</h3>
+                        <p>Divulgue vagas e encontre os melhores talentos para sua equipe.</p>
+                    </div>
+                    <div class="signup-choice-option" data-type="profissional">
+                        <i class="fas fa-user-tie"></i>
+                        <h3>Sou um Profissional</h3>
+                        <p>Crie seu perfil, mostre suas habilidades e encontre novas oportunidades.</p>
+                    </div>
+                </div>
+                <p class="alternate-action-link-container">Já tem uma conta? <a href="#" class="action-link show-login-link">Entrar</a></p>
+            </div>
+        </div>
+
+        <div class="form-signup-empresa-wrapper panel-wrapper">
+            <div>
+                <h2 class="welcome-title">Cadastro da Empresa</h2>
+                <p class="welcome-subtitle">Complete as informações para criar sua conta.</p>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="emp-progress-fill"></div>
+                    </div>
+                    <div class="progress-steps" id="emp-progress-steps">
+                        <div class="progress-step active">Dados</div>
+                        <div class="progress-step">Contato</div>
+                        <div class="progress-step">Representante</div>
+                        <div class="progress-step">Acesso</div>
+                    </div>
+                </div>
+                <form id="emp-form" onsubmit="event.preventDefault(); alert('Empresa cadastrada com sucesso!');">
+                    <div class="form-part active" id="emp-part-1">
+                        <div class="form-group">
+                            <label for="emp-nome_empresa">Nome da Empresa</label>
+                            <input type="text" id="emp-nome_empresa" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Número de funcionários</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="emp-f1" name="num_funcionarios" value="1" required>
+                                    <label for="emp-f1">Só você</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="emp-f2" name="num_funcionarios" value="2-9">
+                                    <label for="emp-f2">2-9</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="emp-f3" name="num_funcionarios" value="10-100">
+                                    <label for="emp-f3">10-100</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="emp-f4" name="num_funcionarios" value="100+">
+                                    <label for="emp-f4">100+</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="emp-cnpj">CNPJ</label><input type="text" id="emp-cnpj" class="form-input" required placeholder="00.000.000/0000-00">
+                        </div>
+                        <div class="form-group">
+                            <label for="regiao">Região</label>
+                            <select id="regiao" name="regiao" class="form-input input-text-e-select-G" required>
+                                <option value="">Selecione uma região</option>
+                                <option value="brasil">&#127463;&#127479; Brasil</option>
+                                <option value="portugal">&#127477;&#127481; Portugal</option>
+                                <option value="japao">&#127471;&#127477; Japão</option>
+                                <option value="estados-unidos">&#127482;&#127480; Estados Unidos</option>
+                                <option value="china">&#127464;&#127475; China</option>
+                                <option value="argentina">&#127462;&#127479; Argentina</option>
+                                <option value="franca">&#127467;&#127479; França</option>
+                                <option value="canada">&#127464;&#127462; Canadá</option>
+                                <option value="australia">&#127462;&#127482; Austrália</option>
+                                <option value="mexico">&#127474;&#127485; México</option>
+                            </select>
+                        </div>
+                        <div class="step-navigation">
+                            <div style="flex:1;"></div>
+                            <button type="button" class="submit-button-custom" onclick="emp_navigateStep(2)">Continuar</button>
+                        </div>
+                    </div>
+                    <div class="form-part" id="emp-part-2">
+                        <div class="div-row">
+                            <div class="form-group" style="flex:3;">
+                                <label for="emp-rua">Rua</label>
+                                <input type="text" id="emp-rua" class="form-input" required>
+                            </div>
+                            <div class="form-group" style="flex:1;">
+                                <label for="emp-num">N°</label>
+                                <input type="text" id="emp-num" class="form-input" required>
+                            </div>
+                        </div>
+                        <div class="div-row">
+                            <div class="form-group">
+                                <label for="emp-bairro">Bairro</label>
+                                <input type="text" id="emp-bairro" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="emp-cep">CEP</label>
+                                <input type="text" id="emp-cep" class="form-input" placeholder="00000-000" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="emp-email_contato">E-mail de Contato</label>
+                            <input type="email" id="emp-email_contato" class="form-input" required>
+                        </div>
+                        <div class="step-navigation">
+                            <button type="button" class="submit-button-custom btn-prev" onclick="emp_navigateStep(1)">Voltar</button>
+                            <button type="button" class="submit-button-custom" onclick="emp_navigateStep(3)">Continuar</button>
+                        </div>
+                    </div>
+                    <div class="form-part" id="emp-part-3">
+                        <div class="info-text">Esta pessoa será a administradora da conta.</div>
+                        <div class="form-group"><label for="emp-nome_rep">Nome do Representante</label><input type="text" id="emp-nome_rep" class="form-input" required></div>
+                        <div class="form-group"><label for="emp-cargo_rep">Cargo</label><input type="text" id="emp-cargo_rep" class="form-input" required></div>
+                        <div class="step-navigation"><button type="button" class="submit-button-custom btn-prev" onclick="emp_navigateStep(2)">Voltar</button><button type="button" class="submit-button-custom" onclick="emp_navigateStep(4)">Continuar</button></div>
+                    </div>
+                    <div class="form-part" id="emp-part-4">
+                        <div class="form-group"><label for="emp-username">Nome de Usuário</label><input type="text" id="emp-username" class="form-input" required></div>
+                        <div class="form-group password-input-wrapper"><label for="emp-senha">Senha</label><input type="password" id="emp-senha" class="form-input" required><span class="password-toggle-icon" onclick="util_togglePassword(this)"><i class="fas fa-eye"></i></span></div>
+                        <div class="form-group password-input-wrapper"><label for="emp-senha2">Confirmar Senha</label><input type="password" id="emp-senha2" class="form-input" required><span class="password-toggle-icon" onclick="util_togglePassword(this)"><i class="fas fa-eye"></i></span></div>
+                        <div class="step-navigation"><button type="button" class="submit-button-custom btn-prev" onclick="emp_navigateStep(3)">Voltar</button>
+                            <button type="submit" class="submit-button-custom"><a href="confirma-cadastro.html" style="padding: 12px 35px; color: white; text-decoration: none;">Finalizar Cadastro</a></button>
+                        </div>
+                    </div>
+                </form>
+                <p class="alternate-action-link-container">Já tem uma conta? <a href="#" class="action-link show-login-link">Entrar</a></p>
+            </div>
+        </div>
+
+        <div class="form-signup-profissional-wrapper panel-wrapper">
+            <div>
+                <h2 class="welcome-title">Crie sua Conta Profissional</h2>
+                <p class="welcome-subtitle">É rápido, fácil e em etapas!</p>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="pro-progress-fill"></div>
+                    </div>
+                    <div class="progress-steps" id="pro-progress-steps">
+                        <div class="progress-step active">Dados Pessoais</div>
+                        <div class="progress-step">Formação</div>
+                        <div class="progress-step">Experiência</div>
+                        <div class="progress-step">Acesso</div>
+                    </div>
+                </div>
+                <form id="pro-form" onsubmit="event.preventDefault(); alert('Perfil profissional criado com sucesso!');">
+                    <div class="form-part active" id="pro-part-1">
+                        <div class="form-group"><label for="pro-fullName">Nome completo</label><input type="text" id="pro-fullName" class="form-input" required></div>
+                        <div class="div-row">
+                            <div class="form-group"><label for="pro-birthDate">Data de nascimento</label><input type="date" id="pro-birthDate" class="form-input" required></div>
+                            <div class="form-group"><label for="pro-cpf">CPF</label><input type="text" id="pro-cpf" class="form-input" placeholder="000.000.000-00" required></div>
+                        </div>
+                        <div class="div-row">
+                            <div class="form-group"><label for="pro-street">Rua</label><input type="text" id="pro-street" class="form-input" required></div>
+                            <div class="form-group" style="flex-basis: 100px; flex-grow:0;"><label for="pro-number">N°</label><input type="text" id="pro-number" class="form-input" required></div>
+                        </div>
+                        <div class="step-navigation">
+                            <div style="flex:1"></div><button type="button" class="submit-button-custom" onclick="pro_navigateStep(2)">Continuar</button>
+                        </div>
+                    </div>
+                    <div class="form-part" id="pro-part-2">
+                        <div class="form-group"><label for="pro-institutionName">Instituição de Ensino</label><input type="text" id="pro-institutionName" class="form-input" required></div>
+                        <div class="form-group"><label for="pro-course">Curso / Área de Estudo</label><input type="text" id="pro-course" class="form-input" required></div>
+                        <div class="form-group"><label for="pro-degree">Grau</label><input type="text" id="pro-degree" class="form-input" placeholder="Ex: Bacharelado, Técnico" required></div>
+                        <div class="step-navigation"><button type="button" class="submit-button-custom btn-prev" onclick="pro_navigateStep(1)">Voltar</button><button type="button" class="submit-button-custom" onclick="pro_navigateStep(3)">Continuar</button></div>
+                    </div>
+                    <div class="form-part" id="pro-part-3">
+                        <div class="form-group"><label for="pro-companyName">Empresa (onde trabalha)</label><input type="text" id="pro-companyName" class="form-input" required></div>
+                        <div class="form-group"><label for="pro-jobTitle">Cargo</label><input type="text" id="pro-jobTitle" class="form-input" required></div>
+                        <div class="form-group"><label for="pro-responsibilities">Principais responsabilidades</label><textarea id="pro-responsibilities" class="form-input" rows="3"></textarea></div>
+                        <div class="step-navigation"><button type="button" class="submit-button-custom btn-prev" onclick="pro_navigateStep(2)">Voltar</button><button type="button" class="submit-button-custom" onclick="pro_navigateStep(4)">Continuar</button></div>
+                    </div>
+                    <div class="form-part" id="pro-part-4">
+                        <div class="form-group"><label for="pro-username">Nome de Usuário</label><input type="text" id="pro-username" class="form-input" required></div>
+                        <div class="form-group password-input-wrapper"><label for="pro-signupPassword">Senha</label><input type="password" id="pro-signupPassword" class="form-input" required><span class="password-toggle-icon" onclick="util_togglePassword(this)"><i class="fas fa-eye"></i></span></div>
+                        <div class="form-group password-input-wrapper"><label for="pro-signupConfirmPassword">Confirmar Senha</label><input type="password" id="pro-signupConfirmPassword" class="form-input" required><span class="password-toggle-icon" onclick="util_togglePassword(this)"><i class="fas fa-eye"></i></span></div>
+                        <div class="checkbox-group"><input type="checkbox" id="pro-terms" required><label for="pro-terms">Aceito os <a href="#" class="action-link">Termos e Condições</a></label></div>
+                        <div class="step-navigation"><button type="button" class="submit-button-custom btn-prev" onclick="pro_navigateStep(3)">Voltar</button><button type="submit" class="submit-button-custom"><a href="confirma-cadastro.html" style="padding: 12px 35px; color: white; text-decoration: none;">Finalizar Cadastro</a></button></div>
+                    </div>
+                </form>
+                <p class="alternate-action-link-container">Já tem uma conta? <a href="#" class="action-link show-login-link">Entrar</a></p>
+            </div>
+        </div>
+
+        <div class="image-panel">
+            <div class="image-container-custom" style="background-image: url(./img/f23.png);"></div>
+        </div>
+    </div>
+
+</body>
+</html>
